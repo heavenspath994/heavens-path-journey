@@ -3,5 +3,5 @@
 const CONFIG = {
     API_BASE: (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost' || window.location.hostname === '')
         ? 'http://localhost:3000/api'
-        : 'https://your-render-app-url.onrender.com/api' // <--- CHANGE THIS TO YOUR RENDER URL
+        : 'https://heavens-path-journey.onrender.com/api'
 };

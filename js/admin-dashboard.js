@@ -265,7 +265,7 @@ document.addEventListener('DOMContentLoaded', () => {
     window.updateStatus = async function(type, id, newStatus) {
         try {
             const token = localStorage.getItem('adminToken');
-            const res = await fetch(`http://localhost:3000/api/admin/${type}/${id}/status`, {
+            const res = await fetch(`${API_BASE}/${type}/${id}/status`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
@@ -275,8 +275,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
             
             if (res.ok) {
-                // Keep the styling updated without full refresh if possible, or just refresh
-                fetchDashboardData();
+                loadDashboardData();
             } else {
                 const data = await res.json();
                 alert('Error updating status: ' + data.message);
@@ -359,19 +358,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    function renderDestinationsTable(list) {
-        if (list && list.length > 0) {
-            document.querySelector('#table-destinations tbody').innerHTML = list.map(d => `
-                <tr>
-                    <td>${d.name}</td>
-                    <td>${d.bookingCount}</td>
-                    <td><span style="color:var(--dash-success)">${formatCurrency(d.revenue)}</span></td>
-                </tr>
-            `).join('');
-        } else {
-            document.querySelector('#table-destinations tbody').innerHTML = '<tr><td colspan="3">No destination data found</td></tr>';
-        }
-    }
+    // Destinations table is managed by admin-cms.js loadDestinations()
+    // No renderDestinationsTable here to avoid overwriting the CMS table
 
     function renderWishlistsTable(list, title = "All Wishlists") {
         const titleEl = document.getElementById('title-wishlists');
@@ -656,9 +644,10 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             if (dests) {
-                document.getElementById('dest-most-popular').textContent = dests.mostPopularDestination;
-                document.getElementById('dest-least-popular').textContent = dests.leastPopularDestination;
-                renderDestinationsTable(dests.destinationStats);
+                const destMostPopEl = document.getElementById('dest-most-popular');
+                const destLeastPopEl = document.getElementById('dest-least-popular');
+                if (destMostPopEl) destMostPopEl.textContent = dests.mostPopularDestination;
+                if (destLeastPopEl) destLeastPopEl.textContent = dests.leastPopularDestination;
             }
 
             if (wish) {
