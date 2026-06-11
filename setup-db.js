@@ -194,7 +194,11 @@ async function setupDatabase() {
             name: { bsonType: "string", description: "Destination name" },
             description: { bsonType: "string", description: "Destination description" },
             image: { bsonType: "string", description: "Image URL" },
-            bestSeason: { bsonType: "string", description: "Best time to visit" }
+            bestSeason: { bsonType: "string", description: "Best time to visit" },
+            attractions: { bsonType: "array", items: { bsonType: "string" } },
+            gallery: { bsonType: "array", items: { bsonType: "string" } },
+            body: { bsonType: "string" },
+            mapIframe: { bsonType: "string" }
           }
         }
       }
@@ -487,19 +491,71 @@ async function setupDatabase() {
     // Sample destinations
     await db.collection("destinations").insertMany([
       {
-        name: "Gangtok",
+        name: "Gangtok & Surroundings",
         description: "The capital of Sikkim, known for its stunning views of Kanchenjunga, monasteries, and vibrant markets.",
-        image: "",
-        bestSeason: "March-June"
+        image: "http://localhost:3000/images/destinations/gangtok.png",
+        bestSeason: "March-June, September-December",
+        attractions: ["MG Marg", "Rumtek Monastery", "Tsomgo Lake", "Nathula Pass"],
+        gallery: [
+          "http://localhost:3000/images/packages/nepal-kathmandu.png"
+        ],
+        body: `<h3><i class="fas fa-landmark text-accent"></i> History</h3>
+<p>Gangtok became the capital of the Namgyal dynasty in 1894 and later became the capital of the Indian state of Sikkim after its integration into India in 1975. It has transformed from a small hamlet to a major tourism hub.</p>
+<h3><i class="fas fa-mountain text-accent"></i> Geography</h3>
+<p>Situated in the lower Himalayas at an elevation of 5,410 ft, Gangtok is built on a steeply tiered hill and offers stunning, clear views of Mount Kanchenjunga, the third highest peak in the world.</p>
+<h3><i class="fas fa-lightbulb text-accent"></i> Interesting Facts</h3>
+<ul>
+  <li>Rumtek Monastery, located near Gangtok, is the largest monastery in Sikkim and a critically important seat of Tibetan Buddhism.</li>
+  <li>MG Marg is India's first litter-free, spit-free, and traffic-free pedestrian zone, famous for its lively atmosphere and cafes.</li>
+  <li>Sikkim is India's first 100% organic state, with all agriculture practiced without chemical fertilizers.</li>
+</ul>`,
+        mapIframe: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d56778.67503521366!2d88.57270425!3d27.33230865!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39e6a56a5805eafb%3A0x73d6132c501c8f20!2sGangtok%2C%20Sikkim!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
       },
       {
-        name: "Darjeeling",
-        description: "The Queen of the Hills, famous for tea gardens, the toy train, and panoramic Himalayan views.",
-        image: "",
-        bestSeason: "April-June"
+        name: "Lachen & Lachung",
+        description: "Twin picturesque villages in North Sikkim offering access to high altitude lakes and valleys.",
+        image: "http://localhost:3000/images/packages/north-sikkim-gurudongmar.png",
+        bestSeason: "April-June, October-November",
+        attractions: ["Gurudongmar Lake", "Yumthang Valley", "Zero Point"],
+        gallery: [
+          "http://localhost:3000/images/packages/north-sikkim-gurudongmar.png"
+        ],
+        body: `<h3><i class="fas fa-landmark text-accent"></i> History</h3>
+<p>Lachen and Lachung are twin picturesque villages in North Sikkim. They were historically significant trading posts with Tibet before the border was closed, retaining their unique Bhutia culture and traditions to this day.</p>
+<h3><i class="fas fa-mountain text-accent"></i> Geography</h3>
+<p>Located at high altitudes (above 8,500 ft), these valleys are characterized by snow-capped peaks, alpine meadows, and the convergence of Lachen Chu and Lachung Chu rivers. The region experiences heavy snowfall in winter.</p>
+<h3><i class="fas fa-lightbulb text-accent"></i> Interesting Facts</h3>
+<ul>
+  <li>Gurudongmar Lake is one of the highest lakes in the world at 17,800 ft. A portion of the lake remarkably never freezes even in extreme sub-zero temperatures.</li>
+  <li>Yumthang Valley is known as the "Valley of Flowers" of Sikkim, coming alive with thousands of blooming rhododendrons in spring.</li>
+  <li>Lachen operates on a unique local self-governance system called "Dzumsa", effectively banning plastic water bottles to preserve the environment.</li>
+</ul>`,
+        mapIframe: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d227092.36531980304!2d88.42398605!3d27.7850882!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39e66cb79d4cc7db%3A0xc6440c9d6ba19d3c!2sLachung%2C%20Sikkim%20737120!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
+      },
+      {
+        name: "The Old Silk Route",
+        description: "An ancient network of trade routes passing through East Sikkim, featuring dramatic zigzag roads.",
+        image: "http://localhost:3000/images/packages/silk-route-zuluk.png",
+        bestSeason: "May-November",
+        attractions: ["Zuluk Loops", "Kupup Lake", "Baba Mandir", "Nathang Valley"],
+        gallery: [
+          "http://localhost:3000/images/packages/silk-route-zuluk.png",
+          "http://localhost:3000/images/packages/silk-route-kupup.png"
+        ],
+        body: `<h3><i class="fas fa-landmark text-accent"></i> History</h3>
+<p>The Old Silk Route or Silk Road which passes through East Sikkim is a part of the ancient network of trade routes which connected China to India. It was a vital link for the trade of silk, horses, and tea between Tibet and India.</p>
+<h3><i class="fas fa-mountain text-accent"></i> Geography</h3>
+<p>It traverses the high-altitude regions of East Sikkim, reaching elevations up to 13,000 feet, featuring dramatic zigzag roads like the Zuluk Loops which offer stunning panoramic views of the Himalayan range.</p>
+<h3><i class="fas fa-lightbulb text-accent"></i> Interesting Facts</h3>
+<ul>
+  <li>Zuluk has an incredible 32 breathtaking hairpin bends that look magnificent from the Thambi View Point.</li>
+  <li>Kupup Lake is shaped remarkably like an elephant, earning it the nickname "Elephant Lake".</li>
+  <li>Baba Mandir is a unique shrine built in honor of Harbhajan Singh, an Indian army soldier who is widely believed to still protect the border troops.</li>
+</ul>`,
+        mapIframe: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d113645.10903387869!2d88.66572805!3d27.34685045!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39e6a005bc18fde3%3A0x6bfa58bcff61c0d5!2sZuluk%2C%20Sikkim%20737131!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
       }
     ]);
-    console.log("   ✅ destinations: 2 sample documents inserted");
+    console.log("   ✅ destinations: 3 sample documents inserted");
 
     // Sample wishlist
     await db.collection("wishlists").insertOne({
