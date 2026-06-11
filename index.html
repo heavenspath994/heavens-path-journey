@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Heaven's Path Journey | Explore Sikkim & Beyond</title>
+  <meta name="description" content="Your trusted travel partner for exploring beautiful destinations across Sikkim and beyond. Comfortable, affordable, and memorable travel experiences.">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Swiper CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+  
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages.css">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <header class="header">
+    <div class="container nav-container">
+      <a href="index.html" class="logo">
+        <img src="assets/images/logo.png" alt="Heaven's Path Journey Logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+        <div class="logo-text" style="display: none;">
+          HEAVEN'S PATH <span>JOURNEY</span>
+        </div>
+      </a>
+      
+      <button class="mobile-menu-btn">
+        <i class="fas fa-bars"></i>
+      </button>
+
+      <nav class="nav-links">
+        <a href="index.html" class="nav-link active">Home</a>
+        <a href="about.html" class="nav-link">About Us</a>
+        <a href="packages.html" class="nav-link">Packages</a>
+        <a href="services.html" class="nav-link">Services</a>
+        <a href="destinations.html" class="nav-link">Destinations</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+        <a href="contact.html" class="btn btn-primary" style="margin-left: 15px;">Book Now</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero" style="padding: 0;">
+    <div class="hero-slider">
+      <!-- Unsplash placeholders will be replaced with generated assets -->
+      <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&q=80&w=2000');"></div>
+      <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&q=80&w=2000');"></div>
+      <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1454496522488-7a8e488e8606?auto=format&fit=crop&q=80&w=2000');"></div>
+    </div>
+    <div class="hero-overlay"></div>
+    
+    <div class="container hero-content">
+      <h1 class="hero-title reveal" data-cms="heroTitle">Discover the Magic of Sikkim</h1>
+      <p class="hero-subtitle reveal" data-cms="heroSubtitle">Your trusted travel partner for exploring beautiful destinations across Sikkim and beyond.</p>
+      <a href="packages.html" class="btn btn-primary reveal">Explore Tours</a>
+    </div>
+  </section>
+
+
+  <!-- About Snippet -->
+  <section class="container">
+    <div class="about-snippet">
+      <div class="about-snippet-text reveal">
+        <span class="section-subtitle">Welcome to Heaven's Path Journey</span>
+        <h2 class="section-title mb-3" data-cms="aboutSnippetTitle">Your Journey Begins Here</h2>
+        <div data-cms="aboutSnippetBody">
+          <p class="mb-3">Based in the heart of Phadamchen, East Sikkim, we specialize in crafting comfortable, affordable, and memorable travel experiences. Whether you're a solo adventurer, a couple seeking romance, or a family looking for a smooth getaway, we tailor every detail to perfection.</p>
+          <p class="mb-4">With local expertise, trusted drivers, and premium handpicked stays, your safety and enjoyment are our top priorities.</p>
+        </div>
+        <div style="display: flex; gap: 20px;">
+          <a href="about.html" class="btn btn-outline">Read Our Story</a>
+          <a href="tel:+918670819934" class="btn btn-primary"><i class="fas fa-phone-alt"></i> Call Us</a>
+        </div>
+      </div>
+      <div class="about-snippet-img reveal">
+        <img src="https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&q=80&w=800" alt="Beautiful Sikkim Landscape">
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Packages -->
+  <section style="background-color: var(--color-bg);">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-subtitle">Popular Tours</span>
+        <h2 class="section-title">Featured Packages</h2>
+      </div>
+      
+      <div class="card-grid" id="featured-packages-grid">
+        <!-- JS will inject packages here -->
+      </div>
+      
+      <div class="text-center mt-4 reveal">
+        <a href="packages.html" class="btn btn-outline">View All Packages</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Grid -->
+  <section class="container">
+    <div class="section-header reveal">
+      <span class="section-subtitle">What We Offer</span>
+      <h2 class="section-title">Our Services</h2>
+    </div>
+    
+    <div class="card-grid" style="grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));">
+      <div class="service-icon-box reveal">
+        <div class="service-icon"><i class="fas fa-map-marked-alt"></i></div>
+        <h3>Tour Packages</h3>
+        <p class="text-light text-sm">Curated itineraries for every traveler type.</p>
+      </div>
+      <div class="service-icon-box reveal">
+        <div class="service-icon"><i class="fas fa-hotel"></i></div>
+        <h3>Hotel Booking</h3>
+        <p class="text-light text-sm">Premium homestays & luxury hotels.</p>
+      </div>
+      <div class="service-icon-box reveal">
+        <div class="service-icon"><i class="fas fa-car"></i></div>
+        <h3>Cab Service</h3>
+        <p class="text-light text-sm">Innova, Scorpio, Xylo & luxury rentals.</p>
+      </div>
+      <div class="service-icon-box reveal">
+        <div class="service-icon"><i class="fas fa-camera"></i></div>
+        <h3>Sightseeing</h3>
+        <p class="text-light text-sm">Local guided tours & permit assistance.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="testimonials">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-subtitle" style="color: var(--color-white);">Reviews</span>
+        <h2 class="section-title">What Our Travelers Say</h2>
+      </div>
+      
+      <div class="swiper testimonials-slider reveal">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <div class="testimonial-card">
+              <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Reviewer" class="testimonial-avatar">
+              <p class="testimonial-text">"The Silk Route trip was arranged flawlessly. The driver was very knowledgeable and the homestay in Phadamchen was incredible. Highly recommended!"</p>
+              <h4 class="testimonial-name">Priya Sharma</h4>
+              <div class="text-accent mt-1"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="testimonial-card">
+              <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Reviewer" class="testimonial-avatar">
+              <p class="testimonial-text">"Booked an Innova for our family trip to North Sikkim. The vehicle was in great condition and the entire journey was smooth and safe."</p>
+              <h4 class="testimonial-name">Rahul Verma</h4>
+              <div class="text-accent mt-1"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="testimonial-card">
+              <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Reviewer" class="testimonial-avatar">
+              <p class="testimonial-text">"Heaven's Path Journey made our honeymoon unforgettable. Every detail was taken care of, allowing us to just relax and enjoy the mountains."</p>
+              <h4 class="testimonial-name">Anjali & Vikram</h4>
+              <div class="text-accent mt-1"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-pagination"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <div class="logo mb-3">
+             <div class="logo-text">HEAVEN'S PATH <span>JOURNEY</span></div>
+          </div>
+          <p style="color: #94A3B8; margin-bottom: 20px;">Your trusted travel partner for exploring beautiful destinations across Sikkim and beyond.</p>
+          <div style="display: flex; gap: 15px;">
+            <a href="#" style="color: var(--color-white); font-size: 1.2rem;"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" style="color: var(--color-white); font-size: 1.2rem;"><i class="fab fa-instagram"></i></a>
+            <a href="#" style="color: var(--color-white); font-size: 1.2rem;"><i class="fab fa-twitter"></i></a>
+          </div>
+        </div>
+        
+        <div class="footer-col">
+          <h3>Quick Links</h3>
+          <ul class="footer-links">
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="packages.html">Tour Packages</a></li>
+            <li><a href="services.html">Our Services</a></li>
+            <li><a href="destinations.html">Destination Guide</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-col">
+          <h3>Contact Info</h3>
+          <ul class="footer-contact">
+            <li>
+              <i class="fas fa-map-marker-alt"></i>
+              <span>Phadamchen, East Sikkim, India</span>
+            </li>
+            <li>
+              <i class="fas fa-phone-alt"></i>
+              <span>+91 8670819934<br>+91 74780 40809</span>
+            </li>
+            <li>
+              <i class="fas fa-envelope"></i>
+              <span>milchankomilanmilchankomilan@gmail.com</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>&copy; <script>document.write(new Date().getFullYear())</script> Heaven's Path Journey. All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- WhatsApp Float -->
+  <a href="https://wa.me/918670819934" target="_blank" class="whatsapp-float">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+  <script src="https://unpkg.com/scrollreveal"></script>
+  <script src="js/config.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/slider.js"></script>
+  <script src="js/packages.js"></script>
+</body>
+</html>
+

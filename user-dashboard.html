@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Account | Heaven's Path Journey</title>
+  
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body class="dashboard-body">
+
+  <div class="dashboard-layout">
+    <!-- Sidebar -->
+    <aside class="dash-sidebar" id="sidebar">
+      <a href="index.html" class="dash-sidebar-header" style="text-decoration: none; color: inherit; display: flex;">
+        <img src="assets/images/logo.png" alt="Logo" onerror="this.style.display='none';">
+        <h2>HEAVEN'S PATH <span>My Account</span></h2>
+      </a>
+      
+      <nav class="dash-nav">
+        <ul class="dash-nav-list">
+          <li class="dash-nav-item"><a href="index.html" class="dash-nav-link"><i class="fas fa-home"></i> Home</a></li>
+          <li class="dash-nav-item"><a href="#" class="dash-nav-link active" data-target="section-account"><i class="fas fa-user-circle"></i> My Account</a></li>
+          <li class="dash-nav-item"><a href="#" class="dash-nav-link" data-target="section-bookings"><i class="fas fa-suitcase-rolling"></i> My Bookings</a></li>
+          <li class="dash-nav-item"><a href="#" class="dash-nav-link" data-target="section-wishlist"><i class="fas fa-heart"></i> My Wishlist</a></li>
+          <li class="dash-nav-item"><a href="#" class="dash-nav-link" data-target="section-payments"><i class="fas fa-file-invoice-dollar"></i> Payment History</a></li>
+          <li class="dash-nav-item"><a href="#" class="dash-nav-link" data-target="section-reviews"><i class="fas fa-star"></i> My Reviews</a></li>
+          <li class="dash-nav-item"><a href="#" class="dash-nav-link" data-target="section-contacts"><i class="fas fa-headset"></i> Contact Requests</a></li>
+          <li class="dash-nav-item"><a href="#" class="dash-nav-link" data-target="section-notifications"><i class="fas fa-bell"></i> Notifications</a></li>
+        </ul>
+      </nav>
+      
+      <div class="dash-sidebar-footer">
+        <button class="dash-logout-btn" id="logout-btn">
+          <i class="fas fa-sign-out-alt"></i> Logout
+        </button>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="dash-main">
+      <header class="dash-header">
+        <div style="display: flex; align-items: center; gap: 15px;">
+          <button id="mobile-toggle" style="background:none; border:none; color:var(--dash-heading); font-size:1.5rem; cursor:pointer; display:none;">
+            <i class="fas fa-bars"></i>
+          </button>
+          <h1 class="dash-header-title" id="page-title">Home</h1>
+        </div>
+        
+        <div class="dash-header-right">
+          <a href="index.html" style="color: var(--dash-text); text-decoration: none;"><i class="fas fa-external-link-alt"></i> View Site</a>
+          <div class="dash-user-profile">
+            <span id="user-name-display">User</span>
+            <div class="dash-avatar"><i class="fas fa-user"></i></div>
+          </div>
+        </div>
+      </header>
+      
+      <div class="dash-content-wrapper">
+        
+        <!-- Loading Spinner -->
+        <div id="loader" style="display: flex; justify-content: center; padding: 50px;">
+          <i class="fas fa-circle-notch fa-spin" style="font-size: 3rem; color: var(--dash-accent);"></i>
+        </div>
+
+        <!-- 1. My Account -->
+        <section id="section-account" class="dash-section">
+          <div class="data-panel">
+            <h3>Account Overview</h3>
+            <ul class="dash-list">
+              <li class="dash-list-item"><span class="dash-list-label">Account Creation Date</span><span class="dash-list-value" id="acc-created">-</span></li>
+              <li class="dash-list-item"><span class="dash-list-label">Last Login</span><span class="dash-list-value" id="acc-last-login">-</span></li>
+              <li class="dash-list-item">
+                <span class="dash-list-label">Profile Completion</span>
+                <span class="dash-list-value" id="acc-completion" style="color:var(--dash-success);">-</span>
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- 2. My Bookings -->
+        <section id="section-bookings" class="dash-section">
+          <div class="data-panel">
+            <h3>Bookings Summary</h3>
+            <ul class="dash-list">
+              <li class="dash-list-item"><span class="dash-list-label">Total Bookings</span><span class="dash-list-value" id="book-total">-</span></li>
+              <li class="dash-list-item"><span class="dash-list-label">Upcoming Trips</span><span class="dash-list-value" id="book-upcoming" style="color:var(--dash-info);">-</span></li>
+              <li class="dash-list-item"><span class="dash-list-label">Completed Trips</span><span class="dash-list-value" id="book-completed" style="color:var(--dash-success);">-</span></li>
+              <li class="dash-list-item"><span class="dash-list-label">Pending Trips</span><span class="dash-list-value" id="book-pending" style="color:var(--dash-warning);">-</span></li>
+              <li class="dash-list-item"><span class="dash-list-label">Cancelled Trips</span><span class="dash-list-value" id="book-cancelled" style="color:var(--dash-danger);">-</span></li>
+              <li class="dash-list-item"><span class="dash-list-label">Last Booking Date</span><span class="dash-list-value" id="book-last-date">-</span></li>
+            </ul>
+            <h4 style="margin-top:24px; color:var(--dash-heading); font-size:1rem;">All Bookings</h4>
+            <div class="table-responsive">
+              <table class="dash-table" id="table-bookings">
+                <thead><tr><th>Date</th><th>Package</th><th>Amount</th><th>Status</th></tr></thead>
+                <tbody><tr><td colspan="4">Loading...</td></tr></tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- 3. My Wishlist -->
+        <section id="section-wishlist" class="dash-section">
+          <div class="data-panel">
+            <h3>Wishlist Summary</h3>
+            <ul class="dash-list">
+              <li class="dash-list-item"><span class="dash-list-label">Total Saved Packages</span><span class="dash-list-value" id="wish-total">-</span></li>
+              <li class="dash-list-item"><span class="dash-list-label">Most Popular Saved Package</span><span class="dash-list-value" id="wish-popular">-</span></li>
+            </ul>
+            </ul>
+            <h4 style="margin-top:24px; color:var(--dash-heading); font-size:1rem;">My Wishlist</h4>
+            <div class="table-responsive">
+              <table class="dash-table" id="table-wishlist">
+                <thead><tr><th>Added On</th><th>Package</th><th>Duration</th><th>Action</th></tr></thead>
+                <tbody><tr><td colspan="4">Loading...</td></tr></tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- 4. My Payments -->
+        <section id="section-payments" class="dash-section">
+          <div class="data-panel">
+            <h3>Payment History</h3>
+            <ul class="dash-list">
+              <li class="dash-list-item"><span class="dash-list-label">Total Amount Spent</span><span class="dash-list-value" id="pay-total" style="color:var(--dash-success); font-size:1.2rem;">-</span></li>
+              <li class="dash-list-item"><span class="dash-list-label">Last Payment Amount</span><span class="dash-list-value" id="pay-last">-</span></li>
+              <li class="dash-list-item"><span class="dash-list-label">Total Transactions</span><span class="dash-list-value" id="pay-count">-</span></li>
+            </ul>
+            <h4 style="margin-top:24px; color:var(--dash-heading); font-size:1rem;">Payment History</h4>
+            <div class="table-responsive">
+              <table class="dash-table" id="table-payments">
+                <thead><tr><th>Date</th><th>Transaction ID</th><th>Amount</th><th>Status</th></tr></thead>
+                <tbody><tr><td colspan="4">Loading...</td></tr></tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- 5. My Reviews -->
+        <section id="section-reviews" class="dash-section">
+          <div class="data-panel">
+            <h3>Reviews & Feedback</h3>
+            <ul class="dash-list">
+              <li class="dash-list-item"><span class="dash-list-label">Total Reviews Submitted</span><span class="dash-list-value" id="rev-total">-</span></li>
+              <li class="dash-list-item"><span class="dash-list-label">Average Rating Given</span><span class="dash-list-value" id="rev-avg" style="color:var(--dash-accent);">-</span></li>
+            </ul>
+            <h4 style="margin-top:24px; color:var(--dash-heading); font-size:1rem;">My Reviews</h4>
+            <div class="table-responsive">
+              <table class="dash-table" id="table-reviews">
+                <thead><tr><th>Date</th><th>Rating</th><th>Review</th><th>Status</th></tr></thead>
+                <tbody><tr><td colspan="4">Loading...</td></tr></tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- 6. Contact Requests -->
+        <section id="section-contacts" class="dash-section">
+          <div class="data-panel">
+            <h3>Support & Inquiries</h3>
+            <ul class="dash-list">
+              <li class="dash-list-item"><span class="dash-list-label">Total Inquiries Submitted</span><span class="dash-list-value" id="contact-total">-</span></li>
+              <li class="dash-list-item"><span class="dash-list-label">Pending Responses</span><span class="dash-list-value" id="contact-pending" style="color:var(--dash-warning);">-</span></li>
+              <li class="dash-list-item"><span class="dash-list-label">Resolved Inquiries</span><span class="dash-list-value" id="contact-resolved" style="color:var(--dash-success);">-</span></li>
+            </ul>
+            <h4 style="margin-top:24px; color:var(--dash-heading); font-size:1rem;">My Inquiries</h4>
+            <div class="table-responsive">
+              <table class="dash-table" id="table-contacts">
+                <thead><tr><th>Date</th><th>Subject</th><th>Message</th><th>Status</th></tr></thead>
+                <tbody><tr><td colspan="4">Loading...</td></tr></tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- 7. Notifications -->
+        <section id="section-notifications" class="dash-section">
+          <div class="data-panel">
+            <h3>Recent Notifications</h3>
+            <ul class="dash-list">
+              <li class="dash-list-item"><span class="dash-list-label">Total Notifications</span><span class="dash-list-value" id="notif-total">-</span></li>
+              <li class="dash-list-item"><span class="dash-list-label">Unread Notifications</span><span class="dash-list-value" id="notif-unread" style="color:var(--dash-info);">-</span></li>
+            </ul>
+            </ul>
+            <h4 style="margin-top:24px; color:var(--dash-heading); font-size:1rem;">All Notifications</h4>
+            <div class="table-responsive">
+              <table class="dash-table" id="table-notifications">
+                <thead><tr><th>Date</th><th>Message</th><th>Status</th></tr></thead>
+                <tbody><tr><td colspan="3">Loading...</td></tr></tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </main>
+  </div>
+
+  <script src="js/config.js"></script>
+  <script src="js/user-dashboard.js"></script>
+</body>
+</html>
+
+

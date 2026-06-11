@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us | Heaven's Path Journey</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages.css">
+</head>
+<body style="background-color: var(--color-bg);">
+
+  <!-- Navigation -->
+  <header class="header">
+    <div class="container nav-container">
+      <a href="index.html" class="logo">
+        <img src="assets/images/logo.png" alt="Logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+        <div class="logo-text" style="display: none;">HEAVEN'S PATH <span>JOURNEY</span></div>
+      </a>
+      <button class="mobile-menu-btn"><i class="fas fa-bars"></i></button>
+      <nav class="nav-links">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="about.html" class="nav-link">About Us</a>
+        <a href="packages.html" class="nav-link">Packages</a>
+        <a href="services.html" class="nav-link">Services</a>
+        <a href="destinations.html" class="nav-link">Destinations</a>
+        <a href="contact.html" class="nav-link active">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Page Header -->
+  <section class="page-header" style="background-image: url('https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&q=80&w=2000');">
+    <div class="page-header-overlay"></div>
+    <div class="page-header-content reveal">
+      <h1 class="page-title">Contact Us</h1>
+      <div class="breadcrumb">
+        <a href="index.html">Home</a> <span>/</span> Contact
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="container">
+    <div class="contact-grid">
+      
+      <!-- Contact Info & Map -->
+      <div class="reveal">
+        <h2 class="section-title mb-4">Get In Touch</h2>
+        <p class="mb-4 text-light">We are here to answer any questions you may have about your trip to Sikkim. Reach out to us and we'll respond as soon as we can.</p>
+        
+        <div class="contact-info-item">
+          <div class="contact-info-icon"><i class="fas fa-map-marker-alt"></i></div>
+          <div class="contact-info-text">
+            <h4>Office Address</h4>
+            <p>Phadamchen, East Sikkim<br>Sikkim, India - 737131</p>
+          </div>
+        </div>
+
+        <div class="contact-info-item">
+          <div class="contact-info-icon"><i class="fas fa-phone-alt"></i></div>
+          <div class="contact-info-text">
+            <h4>Phone & WhatsApp</h4>
+            <a href="tel:+918670819934">+91 8670819934</a><br>
+            <a href="tel:+917478040809">+91 74780 40809</a>
+          </div>
+        </div>
+
+        <div class="contact-info-item">
+          <div class="contact-info-icon"><i class="fas fa-envelope"></i></div>
+          <div class="contact-info-text">
+            <h4>Email Address</h4>
+            <a href="mailto:milchankomilanmilchankomilan@gmail.com">milchankomilanmilchankomilan<br>@gmail.com</a>
+          </div>
+        </div>
+
+        <div class="map-container">
+          <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14214.2882897087!2d88.79093849999999!3d27.245842899999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39e421006509f635%3A0x6b8bc61184a4ec16!2sPhadamchen%2C%20Sikkim%20737131!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" 
+            width="100%" 
+            height="100%" 
+            style="border:0;" 
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+      </div>
+
+      <!-- Contact Form -->
+      <div class="contact-form-card reveal">
+        <h3 class="mb-4" style="font-size: 1.8rem; color: var(--color-primary);">Send an Inquiry</h3>
+        <form id="contact-form">
+          <div class="form-group">
+            <label class="form-label" for="name">Full Name</label>
+            <input type="text" class="form-control" id="name" required placeholder="John Doe">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="email">Email Address</label>
+            <input type="email" class="form-control" id="email" required placeholder="john@example.com">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="phone">Phone/WhatsApp Number</label>
+            <input type="tel" class="form-control" id="phone" required placeholder="+91 9876543210">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="interest">I am interested in...</label>
+            <select class="form-control" id="interest">
+              <option value="General Inquiry">General Inquiry</option>
+              <option value="Tour Package">Tour Package</option>
+              <option value="Cab Rental">Cab Rental</option>
+              <option value="Hotel Booking">Hotel Booking</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="dates">Expected Travel Dates (Optional)</label>
+            <input type="text" class="form-control" id="dates" placeholder="e.g. October 2024">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="message">Your Message</label>
+            <textarea class="form-control" id="message" required placeholder="Tell us about your requirements..."></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary w-100" style="width: 100%;">Submit Inquiry</button>
+        </form>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container text-center">
+      <p>&copy; 2024 Heaven's Path Journey.</p>
+    </div>
+  </footer>
+
+  <!-- WhatsApp Float -->
+  <a href="https://wa.me/918670819934" target="_blank" class="whatsapp-float">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <script src="https://unpkg.com/scrollreveal"></script>
+  <script src="js/config.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/contact.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tour Packages | Heaven's Path Journey</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages.css">
+</head>
+<body style="background-color: var(--color-bg);">
+
+  <!-- Navigation -->
+  <header class="header">
+    <div class="container nav-container">
+      <a href="index.html" class="logo">
+        <img src="assets/images/logo.png" alt="Logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+        <div class="logo-text" style="display: none;">HEAVEN'S PATH <span>JOURNEY</span></div>
+      </a>
+      <button class="mobile-menu-btn"><i class="fas fa-bars"></i></button>
+      <nav class="nav-links">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="about.html" class="nav-link">About Us</a>
+        <a href="packages.html" class="nav-link active">Packages</a>
+        <a href="services.html" class="nav-link">Services</a>
+        <a href="destinations.html" class="nav-link">Destinations</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+        <a href="contact.html" class="btn btn-primary" style="margin-left: 15px;">Book Now</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Page Header -->
+  <section class="page-header" style="background-image: url('https://images.unsplash.com/photo-1518098268026-4e89f1a2cd8e?auto=format&fit=crop&q=80&w=2000');">
+    <div class="page-header-overlay"></div>
+    <div class="page-header-content reveal">
+      <h1 class="page-title">Tour Packages</h1>
+      <div class="breadcrumb">
+        <a href="index.html">Home</a> <span>/</span> Packages
+      </div>
+    </div>
+  </section>
+
+  <!-- Package Catalog -->
+  <section class="container">
+    <div class="section-header reveal">
+      <span class="section-subtitle">Find Your Next Adventure</span>
+      <h2 class="section-title">Explore Our Packages</h2>
+    </div>
+
+    <!-- Filter Bar -->
+    <div class="text-center mb-4 reveal">
+      <div style="display: inline-flex; flex-wrap: wrap; gap: 10px; justify-content: center;">
+        <button class="btn btn-primary filter-btn active" data-filter="all">All Packages</button>
+        <button class="btn btn-outline filter-btn" data-filter="family">Family Trips</button>
+        <button class="btn btn-outline filter-btn" data-filter="honeymoon">Honeymoon</button>
+        <button class="btn btn-outline filter-btn" data-filter="adventure">Adventure</button>
+        <button class="btn btn-outline filter-btn" data-filter="solo">Solo/Friends</button>
+      </div>
+    </div>
+
+    <!-- Grid -->
+    <div class="card-grid" id="all-packages-grid">
+      <!-- Injected by packages.js -->
+    </div>
+  </section>
+
+  <!-- Custom Package CTA -->
+  <section class="container mb-4">
+    <div class="contact-form-card text-center reveal" style="background-color: var(--color-primary); color: var(--color-white);">
+      <h2 style="color: var(--color-white); margin-bottom: 15px;">Need a Custom Itinerary?</h2>
+      <p style="margin-bottom: 25px; color: #cbd5e1;">We can tailor a trip exactly to your preferences, budget, and travel dates.</p>
+      <a href="contact.html" class="btn btn-primary">Request Custom Quote</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <div class="logo mb-3">
+             <div class="logo-text">HEAVEN'S PATH <span>JOURNEY</span></div>
+          </div>
+          <p style="color: #94A3B8; margin-bottom: 20px;">Your trusted travel partner for exploring beautiful destinations across Sikkim and beyond.</p>
+        </div>
+        <div class="footer-col">
+          <h3>Contact Info</h3>
+          <ul class="footer-contact">
+            <li><i class="fas fa-map-marker-alt"></i><span>Phadamchen, East Sikkim</span></li>
+            <li><i class="fas fa-phone-alt"></i><span>+91 8670819934</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 Heaven's Path Journey.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://unpkg.com/scrollreveal"></script>
+  <script src="js/config.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/packages.js"></script>
+</body>
+</html>
+

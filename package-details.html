@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tour Details | Heaven's Path Journey</title>
+  <meta name="description" content="Explore the detailed itinerary, gallery, and inclusions for this tour package by Heaven's Path Journey.">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages.css">
+
+  <style>
+    /* ====== Package Details Page Styles ====== */
+
+    /* Hero Section */
+    .pkg-hero {
+      height: 500px;
+      position: relative;
+      margin-top: var(--header-height);
+      overflow: hidden;
+    }
+
+    .pkg-hero-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 8s ease;
+    }
+
+    .pkg-hero:hover .pkg-hero-img {
+      transform: scale(1.05);
+    }
+
+    .pkg-hero-overlay {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: linear-gradient(180deg, rgba(15,23,42,0.3) 0%, rgba(15,23,42,0.85) 100%);
+      z-index: 1;
+    }
+
+    .pkg-hero-content {
+      position: absolute;
+      bottom: 60px;
+      left: 0; right: 0;
+      z-index: 2;
+      color: #fff;
+    }
+
+    .pkg-hero-badge {
+      display: inline-block;
+      background: var(--color-accent);
+      color: var(--color-primary);
+      padding: 6px 18px;
+      border-radius: 30px;
+      font-weight: 700;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+    }
+
+    .pkg-hero-title {
+      font-size: 3rem;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 12px;
+      text-shadow: 2px 2px 8px rgba(0,0,0,0.4);
+    }
+
+    .pkg-hero-meta {
+      display: flex;
+      gap: 30px;
+      flex-wrap: wrap;
+      align-items: center;
+      font-size: 1.05rem;
+    }
+
+    .pkg-hero-meta span {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .pkg-hero-meta i {
+      color: var(--color-accent);
+    }
+
+    /* Breadcrumb */
+    .pkg-breadcrumb {
+      padding: 16px 0;
+      background: var(--color-white);
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .pkg-breadcrumb-list {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.9rem;
+      color: var(--color-text-light);
+    }
+
+    .pkg-breadcrumb-list a {
+      color: var(--color-text-light);
+      transition: color 0.2s;
+    }
+
+    .pkg-breadcrumb-list a:hover {
+      color: var(--color-accent);
+    }
+
+    .pkg-breadcrumb-list .current {
+      color: var(--color-primary);
+      font-weight: 600;
+    }
+
+    /* Main Layout */
+    .pkg-layout {
+      display: grid;
+      grid-template-columns: 1fr 380px;
+      gap: 40px;
+      padding: 50px 0 80px;
+    }
+
+    /* Gallery */
+    .pkg-gallery {
+      margin-bottom: 50px;
+    }
+
+    .pkg-gallery h2 {
+      font-size: 1.6rem;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .pkg-gallery h2 i {
+      color: var(--color-accent);
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      border-radius: 16px;
+      overflow: hidden;
+    }
+
+    .gallery-item {
+      position: relative;
+      aspect-ratio: 4/3;
+      overflow: hidden;
+      cursor: pointer;
+      border-radius: 12px;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.1);
+    }
+
+    .gallery-item::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(15,23,42,0);
+      transition: background 0.3s;
+    }
+
+    .gallery-item:hover::after {
+      background: rgba(15,23,42,0.2);
+    }
+
+    /* Itinerary Timeline */
+    .pkg-itinerary {
+      margin-bottom: 50px;
+    }
+
+    .pkg-itinerary h2 {
+      font-size: 1.6rem;
+      margin-bottom: 30px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .pkg-itinerary h2 i {
+      color: var(--color-accent);
+    }
+
+    .timeline {
+      position: relative;
+      padding-left: 40px;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 15px;
+      top: 0;
+      bottom: 0;
+      width: 3px;
+      background: linear-gradient(180deg, var(--color-accent) 0%, var(--color-border) 100%);
+      border-radius: 3px;
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 30px;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeInUp 0.6s ease forwards;
+    }
+
+    .timeline-item:nth-child(1) { animation-delay: 0.1s; }
+    .timeline-item:nth-child(2) { animation-delay: 0.2s; }
+    .timeline-item:nth-child(3) { animation-delay: 0.3s; }
+    .timeline-item:nth-child(4) { animation-delay: 0.4s; }
+    .timeline-item:nth-child(5) { animation-delay: 0.5s; }
+    .timeline-item:nth-child(6) { animation-delay: 0.6s; }
+    .timeline-item:nth-child(7) { animation-delay: 0.7s; }
+    .timeline-item:nth-child(8) { animation-delay: 0.8s; }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .timeline-dot {
+      position: absolute;
+      left: -33px;
+      top: 24px;
+      width: 28px;
+      height: 28px;
+      background: var(--color-accent);
+      border-radius: 50%;
+      border: 4px solid var(--color-white);
+      box-shadow: 0 0 0 3px rgba(245, 197, 24, 0.3);
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.65rem;
+      font-weight: 800;
+      color: var(--color-primary);
+    }
+
+    .timeline-card {
+      background: var(--color-white);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+      border: 1px solid var(--color-border);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      display: grid;
+      grid-template-columns: 240px 1fr;
+    }
+
+    .timeline-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-xl);
+    }
+
+    .timeline-card-img {
+      width: 100%;
+      height: 100%;
+      min-height: 200px;
+      object-fit: cover;
+    }
+
+    .timeline-card-body {
+      padding: 24px 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .timeline-day-label {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--color-primary) 0%, #1E293B 100%);
+      color: var(--color-accent);
+      padding: 4px 14px;
+      border-radius: 20px;
+      font-weight: 700;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 10px;
+      width: fit-content;
+    }
+
+    .timeline-card-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+      color: var(--color-primary);
+    }
+
+    .timeline-card-desc {
+      font-size: 0.92rem;
+      color: var(--color-text-light);
+      line-height: 1.7;
+    }
+
+    /* Sidebar */
+    .pkg-sidebar {
+      position: sticky;
+      top: calc(var(--header-height) + 20px);
+      align-self: start;
+    }
+
+    .sidebar-card {
+      background: var(--color-white);
+      border-radius: 16px;
+      box-shadow: var(--shadow-lg);
+      border: 1px solid var(--color-border);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+
+    .sidebar-card-header {
+      background: linear-gradient(135deg, var(--color-primary) 0%, #1E293B 100%);
+      padding: 18px 20px;
+      text-align: center;
+    }
+
+    .sidebar-price-label {
+      color: #94A3B8;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 4px;
+    }
+
+    .sidebar-price {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--color-accent);
+      font-family: var(--font-heading);
+    }
+
+    .sidebar-price span {
+      font-size: 0.8rem;
+      color: #94A3B8;
+      font-weight: 400;
+    }
+
+    .sidebar-card-body {
+      padding: 16px 20px;
+    }
+
+    .sidebar-info-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 0;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .sidebar-info-item:last-child {
+      border-bottom: none;
+    }
+
+    .sidebar-info-icon {
+      width: 34px;
+      height: 34px;
+      background: rgba(245, 197, 24, 0.15);
+      color: var(--color-accent);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.95rem;
+      flex-shrink: 0;
+    }
+
+    .sidebar-info-label {
+      font-size: 0.8rem;
+      color: var(--color-text-light);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .sidebar-info-value {
+      font-weight: 600;
+      color: var(--color-primary);
+      font-size: 0.95rem;
+    }
+
+    .sidebar-book-btn {
+      display: block;
+      width: 100%;
+      padding: 12px;
+      background: var(--color-accent);
+      color: var(--color-primary);
+      border: none;
+      border-radius: 10px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      font-family: var(--font-heading);
+      cursor: pointer;
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      margin-top: 6px;
+    }
+
+    .sidebar-book-btn:hover {
+      background: var(--color-accent-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(245, 197, 24, 0.4);
+    }
+
+    .sidebar-book-btn i {
+      margin-right: 8px;
+    }
+
+    /* Includes Card */
+    .includes-card {
+      background: var(--color-white);
+      border-radius: 16px;
+      box-shadow: var(--shadow-lg);
+      border: 1px solid var(--color-border);
+      padding: 24px;
+    }
+
+    .includes-card h3 {
+      font-size: 1.1rem;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .includes-card h3 i {
+      color: var(--color-accent);
+    }
+
+    .includes-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .includes-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 8px 0;
+      font-size: 0.9rem;
+      color: var(--color-text);
+    }
+
+    .includes-list li i {
+      color: var(--color-secondary);
+      margin-top: 3px;
+      flex-shrink: 0;
+    }
+
+    /* Lightbox */
+    .lightbox-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.92);
+      z-index: 10000;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .lightbox-overlay.active {
+      display: flex;
+      opacity: 1;
+    }
+
+    .lightbox-img {
+      max-width: 85vw;
+      max-height: 85vh;
+      border-radius: 12px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+      object-fit: contain;
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 24px;
+      right: 32px;
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 2rem;
+      cursor: pointer;
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.1);
+      transition: background 0.2s;
+    }
+
+    .lightbox-close:hover {
+      background: rgba(255,255,255,0.25);
+    }
+
+    .lightbox-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255,255,255,0.1);
+      border: none;
+      color: #fff;
+      font-size: 1.5rem;
+      cursor: pointer;
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s;
+    }
+
+    .lightbox-nav:hover {
+      background: rgba(255,255,255,0.25);
+    }
+
+    .lightbox-prev { left: 24px; }
+    .lightbox-next { right: 24px; }
+
+    /* Contact CTA */
+    .pkg-cta-section {
+      background: linear-gradient(135deg, var(--color-primary) 0%, #1E293B 100%);
+      padding: 60px 0;
+      text-align: center;
+    }
+
+    .pkg-cta-section h2 {
+      color: #fff;
+      font-size: 2rem;
+      margin-bottom: 12px;
+    }
+
+    .pkg-cta-section p {
+      color: #94A3B8;
+      font-size: 1.1rem;
+      margin-bottom: 28px;
+    }
+
+    .pkg-cta-buttons {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .pkg-cta-buttons .btn {
+      padding: 14px 36px;
+      font-size: 1rem;
+      border-radius: 10px;
+    }
+
+    .btn-whatsapp {
+      background: #25D366;
+      color: #fff !important;
+      border: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 600;
+    }
+
+    .btn-whatsapp:hover {
+      background: #1da851;
+    }
+
+    /* Responsive */
+    @media (max-width: 992px) {
+      .pkg-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .pkg-sidebar {
+        position: static;
+      }
+
+      .timeline-card {
+        grid-template-columns: 1fr;
+      }
+
+      .timeline-card-img {
+        height: 200px;
+      }
+
+      .pkg-hero-title {
+        font-size: 2.2rem;
+      }
+
+      .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 576px) {
+      .pkg-hero {
+        height: 350px;
+      }
+
+      .pkg-hero-title {
+        font-size: 1.8rem;
+      }
+
+      .pkg-hero-meta {
+        gap: 16px;
+        font-size: 0.9rem;
+      }
+
+      .gallery-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+      }
+
+      .timeline {
+        padding-left: 30px;
+      }
+
+      .timeline-dot {
+        left: -24px;
+        width: 22px;
+        height: 22px;
+        font-size: 0.55rem;
+      }
+
+      .timeline-card-body {
+        padding: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <header class="header">
+    <div class="container nav-container">
+      <a href="index.html" class="logo">
+        <img src="assets/images/logo.png" alt="Heaven's Path Journey Logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+        <div class="logo-text" style="display: none;">
+          HEAVEN'S PATH <span>JOURNEY</span>
+        </div>
+      </a>
+      
+      <button class="mobile-menu-btn"><i class="fas fa-bars"></i></button>
+
+      <nav class="nav-links">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="about.html" class="nav-link">About Us</a>
+        <a href="packages.html" class="nav-link active">Packages</a>
+        <a href="services.html" class="nav-link">Services</a>
+        <a href="destinations.html" class="nav-link">Destinations</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+        <a href="contact.html" class="btn btn-primary" style="margin-left: 15px;">Book Now</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Banner (dynamic) -->
+  <section class="pkg-hero" id="pkg-hero">
+    <img class="pkg-hero-img" id="hero-img" src="" alt="">
+    <div class="pkg-hero-overlay"></div>
+    <div class="pkg-hero-content">
+      <div class="container">
+        <span class="pkg-hero-badge" id="hero-badge"></span>
+        <h1 class="pkg-hero-title" id="hero-title"></h1>
+        <div class="pkg-hero-meta">
+          <span id="hero-duration"><i class="far fa-clock"></i> </span>
+          <span id="hero-price"><i class="fas fa-tag"></i> </span>
+          <span><i class="fas fa-map-marker-alt"></i> Sikkim & Beyond</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Breadcrumb -->
+  <div class="pkg-breadcrumb">
+    <div class="container">
+      <div class="pkg-breadcrumb-list">
+        <a href="index.html"><i class="fas fa-home"></i> Home</a>
+        <span>/</span>
+        <a href="packages.html">Packages</a>
+        <span>/</span>
+        <span class="current" id="breadcrumb-title"></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="container">
+    <div class="pkg-layout">
+      
+      <!-- Left Column -->
+      <div class="pkg-main">
+
+        <!-- Gallery -->
+        <div class="pkg-gallery">
+          <h2><i class="fas fa-images"></i> Gallery</h2>
+          <div class="gallery-grid" id="gallery-grid"></div>
+        </div>
+
+        <!-- Itinerary -->
+        <div class="pkg-itinerary">
+          <h2><i class="fas fa-route"></i> Day-by-Day Itinerary</h2>
+          <div class="timeline" id="timeline"></div>
+        </div>
+
+        <!-- Location Map -->
+        <div class="pkg-map" id="pkg-map" style="display: none; margin-top: 50px;">
+          <h2><i class="fas fa-map-marked-alt"></i> Location Map</h2>
+          <div class="map-container" style="border-radius: 12px; overflow: hidden; margin-top: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
+            <iframe id="map-iframe" src="" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <aside class="pkg-sidebar">
+        <div class="sidebar-card">
+          <div class="sidebar-card-header">
+            <div class="sidebar-price-label">Starting From</div>
+            <div class="sidebar-price" id="sidebar-price"></div>
+            <div style="color: #94A3B8; font-size: 0.75rem; margin-top: 2px;">per person</div>
+          </div>
+          <div class="sidebar-card-body">
+            <div class="sidebar-info-item">
+              <div class="sidebar-info-icon"><i class="far fa-clock"></i></div>
+              <div>
+                <div class="sidebar-info-label">Duration</div>
+                <div class="sidebar-info-value" id="sidebar-duration"></div>
+              </div>
+            </div>
+            <div class="sidebar-info-item">
+              <div class="sidebar-info-icon"><i class="fas fa-mountain"></i></div>
+              <div>
+                <div class="sidebar-info-label">Tour Type</div>
+                <div class="sidebar-info-value" id="sidebar-category"></div>
+              </div>
+            </div>
+
+            <a href="#" class="sidebar-book-btn" id="book-now-btn" style="margin-bottom: 0.75rem;">
+              <i class="fas fa-paper-plane"></i> Book This Tour
+            </a>
+
+            <div style="margin-top: 0.75rem; margin-bottom: 0; padding-top: 0.75rem; border-top: 1px solid var(--color-border);">
+              <div class="sidebar-info-label" style="margin-bottom: 6px; font-weight: 600; color: var(--color-primary);"><i class="fas fa-check-double text-accent"></i> What's Included</div>
+              <ul class="includes-list" id="includes-list" style="font-size: 0.8rem; list-style: none; padding: 0; margin: 0;"></ul>
+            </div>
+          </div>
+        </div>
+
+      </aside>
+    </div>
+  </div>
+
+  <!-- CTA Section -->
+  <section class="pkg-cta-section">
+    <div class="container">
+      <h2>Ready to Start Your Adventure?</h2>
+      <p>Contact us now to book this tour or customize it to your needs.</p>
+      <div class="pkg-cta-buttons">
+        <a href="contact.html" class="btn btn-primary" id="cta-contact-btn"><i class="fas fa-envelope"></i> Contact Us</a>
+        <a href="https://wa.me/918670819934" target="_blank" class="btn btn-whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp Us</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Booking Modal -->
+  <div class="auth-modal-overlay" id="booking-modal" style="display: none; z-index: 10000;">
+    <div class="auth-modal" style="max-width: 500px;">
+      <button class="auth-modal-close" id="booking-modal-close"><i class="fas fa-times"></i></button>
+      
+      <div class="auth-modal-logo" style="margin-bottom: 10px;">
+        <h2>Book <span id="booking-pkg-title">This Tour</span></h2>
+      </div>
+      
+      <div id="booking-alert" class="auth-modal-alert"></div>
+
+      <form id="booking-form" class="auth-modal-form active">
+        <input type="hidden" id="booking-pkg-id">
+        <div class="form-group" style="text-align: left;">
+          <label class="form-label" for="booking-name" style="font-size: 0.9rem;">Traveler Name</label>
+          <input type="text" id="booking-name" class="form-control" required placeholder="John Doe">
+        </div>
+        <div class="form-group" style="text-align: left;">
+          <label class="form-label" for="booking-email" style="font-size: 0.9rem;">Email Address</label>
+          <input type="email" id="booking-email" class="form-control" required placeholder="user@example.com">
+        </div>
+        <div class="form-group" style="text-align: left;">
+          <label class="form-label" for="booking-phone" style="font-size: 0.9rem;">Phone Number</label>
+          <input type="tel" id="booking-phone" class="form-control" required placeholder="9876543210">
+        </div>
+        <div class="form-group" style="text-align: left;">
+          <label class="form-label" for="booking-date" style="font-size: 0.9rem;">Travel Date</label>
+          <input type="date" id="booking-date" class="form-control" required>
+        </div>
+        <div class="form-group" style="text-align: left;">
+          <label class="form-label" for="booking-persons" style="font-size: 0.9rem;">Number of Persons</label>
+          <input type="number" id="booking-persons" class="form-control" min="1" max="20" value="2" required>
+        </div>
+        
+        <button type="submit" class="btn btn-primary" style="width: 100%; border-radius: 8px;" id="btn-booking-submit">Submit Booking Request</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <div class="logo mb-3">
+             <div class="logo-text">HEAVEN'S PATH <span>JOURNEY</span></div>
+          </div>
+          <p style="color: #94A3B8; margin-bottom: 20px;">Your trusted travel partner for exploring beautiful destinations across Sikkim and beyond.</p>
+        </div>
+        <div class="footer-col">
+          <h3>Quick Links</h3>
+          <ul class="footer-links">
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="packages.html">Tour Packages</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3>Contact Info</h3>
+          <ul class="footer-contact">
+            <li><i class="fas fa-map-marker-alt"></i><span>Phadamchen, East Sikkim</span></li>
+            <li><i class="fas fa-phone-alt"></i><span>+91 8670819934</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 Heaven's Path Journey.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Lightbox -->
+  <div class="lightbox-overlay" id="lightbox">
+    <button class="lightbox-close" id="lightbox-close"><i class="fas fa-times"></i></button>
+    <button class="lightbox-nav lightbox-prev" id="lightbox-prev"><i class="fas fa-chevron-left"></i></button>
+    <img class="lightbox-img" id="lightbox-img" src="" alt="Gallery Image">
+    <button class="lightbox-nav lightbox-next" id="lightbox-next"><i class="fas fa-chevron-right"></i></button>
+  </div>
+
+  <script src="https://unpkg.com/scrollreveal"></script>
+  <script src="js/config.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/packages.js"></script>
+  <script src="js/package-details.js"></script>
+  <script src="js/booking.js"></script>
+</body>
+</html>
+
