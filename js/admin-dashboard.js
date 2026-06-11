@@ -73,7 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     async function fetchApi(endpoint) {
         try {
-            const res = await fetch(`${API_BASE}/${endpoint}`, {
+            const res = await fetch(`${API_BASE}/admin/${endpoint}`, {
                 headers: { 'Authorization': `Bearer ${token}` }
             });
             if (res.status === 401 || res.status === 403) {
@@ -265,7 +265,7 @@ document.addEventListener('DOMContentLoaded', () => {
     window.updateStatus = async function(type, id, newStatus) {
         try {
             const token = localStorage.getItem('adminToken');
-            const res = await fetch(`${API_BASE}/${type}/${id}/status`, {
+            const res = await fetch(`${API_BASE}/admin/${type}/${id}/status`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
